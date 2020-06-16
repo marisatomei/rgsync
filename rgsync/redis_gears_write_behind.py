@@ -408,20 +408,20 @@ class RGWriteBehind(RGWriteBase):
                  onFailedPolicy="retry",
                  onFailedRetryInterval=onFailedRetryInterval)
 
-class RGWriteThrough(RGWriteBase):
-    def __init__(self, GB, keysPrefix, mappings, connector, name, version=None):
-        RGWriteBase.__init__(self, mappings, connector, name, version)
+# class RGWriteThrough(RGWriteBase):
+#     def __init__(self, GB, keysPrefix, mappings, connector, name, version=None):
+#         RGWriteBase.__init__(self, mappings, connector, name, version)
 
-        ## create the execution to write each changed key to database
-        descJson = {
-            'name':'%s.KeysReader' % name,
-            'version':version,
-            'desc':'write each changed key directly to databse',
-        }
-        GB('KeysReader', desc=json.dumps(descJson)).\
-        map(PrepareRecord).\
-        filter(ValidateHash).\
-        filter(WriteNoReplicate).\
-        filter(TryWriteToTarget(self)).\
-        foreach(UpdateHash).\
-        register(mode='sync', prefix='%s*' % keysPrefix, eventTypes=['hset', 'hmset'])
+#         ## create the execution to write each changed key to database
+#         descJson = {
+#             'name':'%s.KeysReader' % name,
+#             'version':version,
+#             'desc':'write each changed key directly to databse',
+#         }
+#         GB('KeysReader', desc=json.dumps(descJson)).\
+#         map(PrepareRecord).\
+#         filter(ValidateHash).\
+#         filter(WriteNoReplicate).\
+#         filter(TryWriteToTarget(self)).\
+#         foreach(UpdateHash).\
+#         register(mode='sync', prefix='%s*' % keysPrefix, eventTypes=['hset', 'hmset'])
