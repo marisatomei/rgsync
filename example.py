@@ -1,5 +1,5 @@
 from rgsync import RGWriteBehind, RGWriteThrough
-from rgsync.Connectors import MySqlConnector, MySqlConnection
+from rgsync.Connectors import InfluxDbConnector, InfluxDbConnection
 
 host_redis = '192.168.31.60:8086'
 user = '12'
