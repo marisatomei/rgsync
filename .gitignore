@@ -1,5 +1,4 @@
 /bin/
-/deps/readies/
 /[0-9]*/
 /build/reqpacks/env
 /build/reqpacks/requirements.final
