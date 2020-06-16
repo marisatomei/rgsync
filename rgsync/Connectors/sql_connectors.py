@@ -1,5 +1,6 @@
 from rgsync.common import *
 from redisgears import getMyHashTag as hashtag
+import requests
 
 class BaseSqlConnection():
     def __init__(self, user, passwd, db):
