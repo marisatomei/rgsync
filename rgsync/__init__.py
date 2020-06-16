@@ -1,6 +1,5 @@
-from .redis_gears_write_behind import RGWriteBehind, RGWriteThrough
+from .redis_gears_write_behind import RGWriteBehind
 
 __all__ = [
-    'RGWriteBehind',
-    'RGWriteThrough'
+    'RGWriteBehind'
 ]
